@@ -8,7 +8,7 @@ source 'http://rubygems.org'
 platforms :ruby_18, :ruby_19 do
   gem 'debugger'
 end
-platforms :ruby_20, :ruby_21 do
+platforms :ruby_20, :ruby_21, :ruby_22, :ruby_23 do
   gem 'byebug'
   gem 'rb-readline'
 end
@@ -28,3 +28,8 @@ gem 'cucumber'
 
 # LapisLazul itself
 gem 'lapis_lazuli', "0.8.7"
+
+
+# Other
+gem 'get_process_mem'
+gem 'sys-proctable'

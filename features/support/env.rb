@@ -4,6 +4,12 @@
 # Author: "spriteCloud B.V." <info@spritecloud.com>
 require 'lapis_lazuli'
 require 'lapis_lazuli/cucumber'
+require 'get_process_mem'
 
 LapisLazuli::WorldModule::Config.config_file = "config/config.yml"
 World(LapisLazuli)
+
+LapisLazuli.After do
+  mem = GetProcessMem.new
+  log.debug "#{mem.kb}kb of memory is used"
+end

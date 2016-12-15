@@ -9,7 +9,7 @@ Given(/^the user navigates to (.*?) in (.*?)$/) do |site, language|
   # Combine the configuration depth with dots
   config_name = "#{site.downcase}.#{language.downcase}"
   # Get the value of the configuration (see /config/config.yml)
-  url         = env(config_name)
+  url = env(config_name)
   # Go to the URL
   browser.goto url
 end
@@ -29,9 +29,9 @@ When(/^the user clicks on link "(.*?)"$/) do |url|
   # Search for the element that includes the expected text
   browser.wait(
     :like => {
-      :element   => :a,
+      :element => :a,
       :attribute => :href,
-      :include   => url
+      :include => url
     }
   ).click
 end
@@ -57,4 +57,20 @@ Given(/^I sleep "([^"]*)" times for "([^"]*)" seconds$/) do |arg1, arg2|
     log.debug "Slept #{i} out of #{arg1} times (Total: #{$TIME_SLEPT} seconds"
     i += 1
   end
+end
+# 710
+$MEM_CONSUMER = []
+Given(/^I fill a variable with (\d+) array items with test "([^"]*)"$/) do |amount, text|
+  i = 1
+  mem = GetProcessMem.new
+  amount.to_i.times do
+    log.debug "#{i}: #{mem.kb}kb\n"
+    $MEM_CONSUMER << text
+    i += 1
+  end
+end
+
+Then(/^give me the memory usage$/) do
+  mem = GetProcessMem.new
+  error "#{mem.kb}kb of memory is used"
 end
