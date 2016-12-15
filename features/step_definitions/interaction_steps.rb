@@ -43,7 +43,7 @@ Given(/^I sleep for "([^"]*)" seconds$/) do |arg1|
   $TIME_SLEPT += arg1.to_i
 end
 
-Then(/^I should log my total sleeping time$/) do 
+Then(/^I should log my total sleeping time$/) do
   log.debug "Slept a total time of #{$TIME_SLEPT} seconds"
 end
 

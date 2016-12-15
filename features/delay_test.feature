@@ -27,7 +27,7 @@ Feature: Delay test
       | 15   |
 
   Scenario: Sleeping many times a little time
-    Given I sleep "100" times for "5" seconds
+    Given I sleep "1000" times for "5" seconds
     Then I should log my total sleeping time
 
   Scenario: Sleeping few times a lot of time
