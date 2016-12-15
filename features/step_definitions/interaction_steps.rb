@@ -51,7 +51,7 @@ Given(/^I sleep "([^"]*)" times for "([^"]*)" seconds$/) do |arg1, arg2|
   loops = arg1.to_i
   log.debug "Going to sleep #{arg2} seconds for #{arg1} times"
   i = 1
-  while loops < i
+  while i < loops
     sleep arg2.to_i
     $TIME_SLEPT += arg2.to_i
     log.debug "Slept #{i} out of #{arg1} times (Total: #{$TIME_SLEPT} seconds"
