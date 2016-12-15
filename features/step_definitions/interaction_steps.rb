@@ -65,7 +65,8 @@ Given(/^I fill a variable with (\d+) array items with test "([^"]*)"$/) do |amou
   mem = GetProcessMem.new
   amount.to_i.times do
     log.debug "#{i}: #{mem.kb}kb\n"
-    $MEM_CONSUMER << text
+    arr = [text,text,text,text,text,text,text,text,text,text,text,text]
+    $MEM_CONSUMER << arr
     i += 1
   end
 end
