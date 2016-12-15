@@ -35,3 +35,24 @@ When(/^the user clicks on link "(.*?)"$/) do |url|
     }
   ).click
 end
+
+$TIME_SLEPT = 0
+Given(/^I sleep for "([^"]*)" seconds$/) do |arg1|
+  log.debug "Going to sleep for #{arg1} seconds"
+  sleep arg1.to_i
+  $TIME_SLEPT += arg1.to_i
+end
+
+Then(/^I should log my total sleeping time$/) do 
+  log.debug "Slept a total time of #{$TIME_SLEPT} seconds"
+end
+
+Given(/^I sleep "([^"]*)" times for "([^"]*)" seconds$/) do |arg1, arg2|
+  loops = arg1.to_i
+  log.debug "Going to sleep #{arg2} seconds for #{arg1} times"
+  i = 1
+  while loops < i
+    sleep arg2.to_i
+    $TIME_SLEPT += arg2.to_i
+  end
+end
